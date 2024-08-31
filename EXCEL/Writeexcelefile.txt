@@ -1,0 +1,51 @@
+
+import java.io.IOException;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class Main{
+ public Static void main(String[]args){
+//create a blank excel of workbook;
+   try ( XSSFWorkbook workbook= new XSSFWorkbook()){
+      Sheet Sheet =workbook.createSheet("Sheet1");
+      // create of array object
+       Object[] [] data={
+        {"Name"," Age", "Email"},
+	{"john Doe",30, "john@test.com."}			
+        {"john Doe",28, "john@test.com."},
+        {"Bob Smith",35, "jacky@example.com."},
+        {"Swapnil,35 swapnil@example.com."}
+		};
+               int Row=0;
+		for(Object [] rowdata:data) {
+		Row  Row1 =sheet.createRow(Rownum++);
+		}
+		int colnum=0;
+		for(Object field :rowdata) {
+			int Cellnum;
+			Cell  Cell =Row.createCell(colnum++);
+                        if(field instanceof String){
+                        Cell.setCellvalue((string)field);
+                        if(field instanceof Integer){
+                        Cell.setCellvalue((Integer)field);
+   }
+
+   }
+     }
+
+    //create file outstream object and write the data
+     try(FileOutputStream os=new FileOutputStrean("Text.xlsx")){
+     workbook.write(os);
+  }
+     System.out.println("Data added successfully to file");
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	}
+    }
+
+
+
+
